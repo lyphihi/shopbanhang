@@ -18,3 +18,4 @@ class HomeController extends Controller
         return view('pages.home')->with('nsx',$nsx)->with('sp',$sp);
     }
 }
+

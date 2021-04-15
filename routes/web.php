@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SanphamController;
 use App\Http\Controllers\NhasanxuatController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,3 +52,9 @@ Route::get('/delete-nsx/{nsx_id}', 'App\Http\Controllers\NhasanxuatController@de
 Route::get('/all-nsx', 'App\Http\Controllers\NhasanxuatController@all_nsx');
 Route::post('/save-nsx', 'App\Http\Controllers\NhasanxuatController@save_nsx');
 Route::post('/update-nsx/{nsx_id}', 'App\Http\Controllers\NhasanxuatController@update_nsx');
+
+//Cart
+Route::post('/save-cart', 'App\Http\Controllers\CartController@save_cart');
+Route::get('/show-cart', 'App\Http\Controllers\CartController@show_cart');
+Route::get('/delete-cart/{rowId}', 'App\Http\Controllers\CartController@delete_cart');
+Route::post('/update-cart', 'App\Http\Controllers\CartController@update_cart');

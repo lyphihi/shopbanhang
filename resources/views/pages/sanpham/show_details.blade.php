@@ -35,15 +35,19 @@
             <h2>{{$value->sp_ten}}</h2>
             <p>ID: {{$value->sp_id}}</p>
             <img src="images/product-details/rating.png" alt="" />
-            <span>
-                <span>{{number_format($value->sp_gia).' VNĐ'}}</span>
-                <label>Số lượng:</label>
-                <input type="number" min="1" value="1" />
-                <button type="button" class="btn btn-fefault cart">
-                    <i class="fa fa-shopping-cart"></i>
-                    Thêm vào giỏ hàng
-                </button>
-            </span>
+            <form action="{{URL::TO('/save-cart')}}" method="post" >
+            {{csrf_field()}}
+                <span>
+                    <span>{{number_format($value->sp_gia).' VNĐ'}}</span>
+                    <label>Số lượng:</label>
+                    <input name="qty" type="number" min="1" value="1" />
+                    <input name="spid_hidden" type="hidden" value="{{$value->sp_id}}" />
+                    <button type="submit" class="btn btn-fefault cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Thêm vào giỏ hàng
+                    </button>
+                </span>
+            </form>
             <p><b>Tình trạng:</b> Còn hàng</p>
             <p><b>Điều kiện:</b> New</p>
             <p><b>Thương hiệu:</b> {{$value->nsx_ten}}</p>
