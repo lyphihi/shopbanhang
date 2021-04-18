@@ -89,9 +89,13 @@
 								<li><a href="#"><i class="fa fa-star"></i>Yêu thích</a></li>
 								<?php 
 									$kh_id = Session::get('kh_id');
-									if($kh_id!=NULL){
+									$hd_id = Session::get('hd_id');
+									if($kh_id!=NULL && $hd_id==NULL ){
 								?>
 								<li><a href="{{URL::TO('/checkout')}}"><i class="fa fa-crosshairs"></i>Thanh toán</a></li>
+								<?php }elseif($kh_id!=NULL && $hd_id!=NULL ){ ?>
+									<li><a href="{{URL::TO('/thanhtoan')}}"><i class="fa fa-crosshairs"></i>Thanh toán</a></li>
+						
 								<?php }else{ ?>
 									<li><a href="{{URL::TO('/login-checkout')}}"><i class="fa fa-crosshairs"></i>Thanh toán</a></li>
 								<?php } ?>
@@ -115,7 +119,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-8">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -143,10 +147,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-4">
+						<form action="{{URL::TO('/tim-kiem')}}" method="post">
+						{{csrf_field()}}
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input name="tukhoa" type="text" placeholder="Tìm kiếm sản phẩm"/>
+							<input name="search" type="submit" placeholder="Search" class="btn btn-warning btn-sm" value="Tìm"/>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>

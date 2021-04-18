@@ -19,7 +19,7 @@ class CheckoutController extends Controller
         $data = array();
         $data['kh_ten'] = $request->kh_ten;
         $data['kh_email'] = $request->kh_email;
-        $data['kh_matkhau'] = $request->kh_matkhau;
+        $data['kh_matkhau'] = md5($request->kh_matkhau);
         $data['kh_sdt'] = $request->kh_sdt;
 
         $kh_id = DB::table('tbl_khachhang')->insertGetId($data);
@@ -46,6 +46,23 @@ class CheckoutController extends Controller
         return Redirect::to('/thanhtoan');
     }
     public function thanhtoan(){
-
+        $nsx = DB::table('tbl_nhasanxuat')->orderby('nsx_id','desc')->get();
+        return view('pages.checkout.thanhtoan')->with('nsx',$nsx);
+    }
+    public function logout_checkout(){
+        Session::flush();
+        return Redirect::to('/login-checkout');
+    }
+    public function login_customer(Request $request){
+        $name = $request->name_tk;
+        $password = md5($request->password_tk);
+        $result = DB::table('tbl_khachhang')->where('kh_ten',$name)->where('kh_matkhau',$password)->first();
+        
+        if($result){
+            Session::put('kh_id',$result->kh_id);
+            return Redirect::to('/checkout');
+        }else{
+            return Redirect::to('/login-checkout');
+        }
     }
 }

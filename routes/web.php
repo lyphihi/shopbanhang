@@ -21,6 +21,7 @@ use App\Http\Controllers\CheckoutController;
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/trang-chu','App\Http\Controllers\HomeController@index');
+Route::post('/tim-kiem','App\Http\Controllers\HomeController@tim_kiem');
 
 Route::get('/thu', function () {
     return view('welcome');
@@ -62,8 +63,11 @@ Route::post('/update-cart', 'App\Http\Controllers\CartController@update_cart');
 
 //Checkout
 Route::get('/login-checkout', 'App\Http\Controllers\CheckoutController@login_checkout');
+Route::get('/logout-checkout', 'App\Http\Controllers\CheckoutController@logout_checkout');
 Route::post('/add-customer', 'App\Http\Controllers\CheckoutController@add_customer');
+Route::post('/login-customer', 'App\Http\Controllers\CheckoutController@login_customer');
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@checkout');
+Route::get('/thanhtoan', 'App\Http\Controllers\CheckoutController@thanhtoan');
 Route::post('/save-checkout-customer', 'App\Http\Controllers\CheckoutController@save_checkout_customer');
 
 

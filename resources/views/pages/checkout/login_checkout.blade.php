@@ -6,7 +6,8 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>Đăng nhập tài khoản</h2>
-                    <form action="#">
+                    <form action="{{URL::TO('/login-customer')}}" method="post">
+                        {{csrf_field()}}
                         <input type="text" name="name_tk" placeholder="Tên đăng nhập" />
                         <input type="password" name="password_tk" placeholder="Mật khẩu" />
                         <span>

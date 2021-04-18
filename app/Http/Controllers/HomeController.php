@@ -17,5 +17,13 @@ class HomeController extends Controller
         $sp = DB::table('tbl_sanpham')->where('sp_trangthai','2')->orderby('sp_id','desc')->limit(4)->get();
         return view('pages.home')->with('nsx',$nsx)->with('sp',$sp);
     }
+    public function tim_kiem(Request $request){
+        $keywords = $request->tukhoa;
+        $nsx = DB::table('tbl_nhasanxuat')->orderby('nsx_id','desc')->get();
+        // $all_sp = DB::table('tbl_sanpham')->join('tbl_nhasanxuat','tbl_nhasanxuat.nsx_id','=','tbl_sanpham.nsx_id')
+        // ->orderby('sp_id','desc')->get();
+        $tk_sp = DB::table('tbl_sanpham')->where('sp_ten','like','%'.$keywords.'%')->get();
+        return view('pages.sanpham.timkiem')->with('nsx',$nsx)->with('tk_sp',$tk_sp);
+    }
 }
 
