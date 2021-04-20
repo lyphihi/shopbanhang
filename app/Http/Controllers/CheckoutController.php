@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
+use Cart;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 session_start();
@@ -64,5 +65,41 @@ class CheckoutController extends Controller
         }else{
             return Redirect::to('/login-checkout');
         }
+    }
+    public function order_place(Request $request){
+        //insert hình thức thanh toán
+        $data = array();
+        $data['tt_ten'] = $request->tt_option;
+        $data['tt_mota'] = 'Đang chờ xử lý';
+        $tt_id = DB::table('tbl_thanhtoan')->insertGetId($data);
+
+        //insert hoá đơn
+        $order_data = array();
+        $order_data['kh_id'] = Session::get('kh_id');
+        $order_data['hd_id'] = Session::get('hd_id');
+        $order_data['tt_id'] = $tt_id;
+        $order_data['order_tong'] = Cart::total();
+        $order_data['order_trangthai'] = 'Đang chờ xử lý';
+        $order_id = DB::table('tbl_order')->insertGetId($order_data);
+
+        //insert chi tiết hoá đơn
+        $content = Cart::content();
+        foreach($content as $v_content){
+            $cthd_data = array();
+            $cthd_data['order_id'] = $order_id;
+            $cthd_data['sp_id'] = $v_content->id;
+            $cthd_data['sp_ten'] = $v_content->name;
+            $cthd_data['sp_gia'] = $v_content->price;
+            $cthd_data['sp_soluong'] = $v_content->qty;
+            DB::table('tbl_chitietdonhang')->insert($cthd_data);
+        }
+        if($data['tt_ten'] == 1){
+            echo "Thanh toán bằng thẻ";
+        }elseif($data['tt_ten'] == 2){
+            echo "Thanh toán bằng tiền mặt";
+        }else{
+            echo "Thanh toán thẻ ghi nợ";
+        }
+        //return Redirect::to('/thanhtoan');
     }
 }

@@ -70,17 +70,22 @@
                 </tbody>
             </table>
         </div>
-        <div class="payment-options">
+        <h4>Chọn hình thức thanh toán</h4> <br>
+        <form action="{{URL::TO('/order-place')}}" method="post" >
+        {{csrf_field()}}
+            <div class="payment-options">
                 <span>
                     <label><input name="tt_option" value="1" type="checkbox"> Thanh toán bằng thẻ</label>
                 </span>
                 <span>
                     <label><input name="tt_option" value="2" type="checkbox"> Thanh toán bằng tiền mặt</label>
                 </span>
-                <!-- <span>
-                    <label><input type="checkbox"> Paypal</label>
-                </span> -->
+                <span>
+                <label><input name="tt_option" value="3" type="checkbox"> Thanh toán thẻ ghi nợ</label>
+                </span> <br>
+                <input type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary">
             </div>
+        </form>
     </div>
 </section> <!--/#cart_items-->
 @endsection	

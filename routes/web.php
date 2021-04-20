@@ -69,5 +69,6 @@ Route::post('/login-customer', 'App\Http\Controllers\CheckoutController@login_cu
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@checkout');
 Route::get('/thanhtoan', 'App\Http\Controllers\CheckoutController@thanhtoan');
 Route::post('/save-checkout-customer', 'App\Http\Controllers\CheckoutController@save_checkout_customer');
+Route::post('/order-place', 'App\Http\Controllers\CheckoutController@order_place');
 
 
