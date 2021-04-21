@@ -71,4 +71,8 @@ Route::get('/thanhtoan', 'App\Http\Controllers\CheckoutController@thanhtoan');
 Route::post('/save-checkout-customer', 'App\Http\Controllers\CheckoutController@save_checkout_customer');
 Route::post('/order-place', 'App\Http\Controllers\CheckoutController@order_place');
 
+//Đơn hàng
+Route::get('/quanly-donhang', 'App\Http\Controllers\CheckoutController@qly_donhang');
+Route::get('/edit-dh/{order_id}', 'App\Http\Controllers\CheckoutController@edit_dh');
+
 

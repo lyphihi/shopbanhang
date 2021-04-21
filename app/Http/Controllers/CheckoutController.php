@@ -12,6 +12,14 @@ session_start();
 
 class CheckoutController extends Controller
 {
+    public function AuthLogin(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('dashbroad');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
     public function login_checkout(){
         $nsx = DB::table('tbl_nhasanxuat')->orderby('nsx_id','desc')->get();
         return view('pages.checkout.login_checkout')->with('nsx',$nsx);
@@ -96,10 +104,34 @@ class CheckoutController extends Controller
         if($data['tt_ten'] == 1){
             echo "Thanh toán bằng thẻ";
         }elseif($data['tt_ten'] == 2){
-            echo "Thanh toán bằng tiền mặt";
+            //echo "Thanh toán bằng tiền mặt";
+            Cart::destroy();
+            $nsx = DB::table('tbl_nhasanxuat')->orderby('nsx_id','desc')->get();
+            return view('pages.checkout.handcash')->with('nsx',$nsx);
         }else{
             echo "Thanh toán thẻ ghi nợ";
         }
         //return Redirect::to('/thanhtoan');
+    }
+    public function qly_donhang(){
+        $this->AuthLogin();
+        $all_order = DB::table('tbl_order')->join('tbl_khachhang','tbl_khachhang.kh_id','=','tbl_order.kh_id')
+        ->select('tbl_order.*','tbl_khachhang.kh_ten')
+        ->orderby('order_id','desc')->get();
+        $qly_donhang = view('admin.qly_donhang')->with('all_order',$all_order);
+        return view('admin_layout')->with('admin.qly_donhang',$qly_donhang);
+    }
+    public function edit_dh($order_id){
+        $this->AuthLogin();
+        $order_by_id = DB::table('tbl_order')->join('tbl_khachhang','tbl_khachhang.kh_id','=','tbl_order.kh_id')
+        ->join('tbl_hoadon','tbl_hoadon.hd_id','=','tbl_order.hd_id')
+        ->join('tbl_chitietdonhang','tbl_order.order_id','=','tbl_chitietdonhang.order_id')
+        ->select('tbl_order.*','tbl_khachhang.*','tbl_hoadon.*','tbl_chitietdonhang.*')
+        ->first();
+        // echo '<pre>';
+        // print_r($order_by_id);
+        // echo '</pre>';
+        $edit_dh = view('admin.edit_dh')->with('order_by_id',$order_by_id);
+        return view('admin_layout')->with('admin.edit_dh',$edit_dh);
     }
 }
