@@ -1,6 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
-<h1>Thêm mới sản phẩm</h1>
+<h2 style="text-align: center">Thêm mới sản phẩm</h2>
     
 <form class="panel-body" name="frmCreate" id="frmCreate" method="post" action="{{URL::TO('/save-sp')}}" enctype="multipart/form-data">
     {{ csrf_field()}}

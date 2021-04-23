@@ -30,9 +30,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <section id="container">
 <!--header start-->
-<header class="header fixed-top clearfix">
+<header class="header fixed-top clearfix" style="background-color: lightblue;">
 <!--logo start-->
-<div class="brand">
+<div class="brand"  >
     <a href="index.html" class="logo">
         Admin
     </a>
@@ -76,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--header end-->
 <!--sidebar start-->
 <aside>
-    <div id="sidebar" class="nav-collapse">
+    <div id="sidebar" class="nav-collapse" >
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
@@ -131,12 +131,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		@yield('admin_content')
 </section>
  <!-- footer -->
-		  <div class="footer">
+		  <!-- <div class="footer">
 			<div class="wthree-copyright">
 			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
-		  </div>
+		  </div> -->
   <!-- / footer -->
+  
 </section>
 <!--main content end-->
 </section>

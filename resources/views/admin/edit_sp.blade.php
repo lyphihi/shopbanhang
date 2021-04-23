@@ -1,6 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
-<h1>Cập nhật sản phẩm</h1>
+<h2 style="text-align: center">Cập nhật sản phẩm</h2>
 @foreach($edit_sp as $key => $edit_value)
 <form class="panel-body" name="frmCreate" id="frmCreate" method="post" action="{{URL::TO('/update-sp/'.$edit_value->sp_id)}}" enctype="multipart/form-data">
     {{ csrf_field()}}

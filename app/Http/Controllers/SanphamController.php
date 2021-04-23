@@ -49,15 +49,15 @@ class SanphamController extends Controller
             $get_ha->move('public/uploads/product',$new_ha);
             $data['sp_ha'] = $new_ha;
             DB::table('tbl_sanpham')->insert($data);
-            Session::flash('alert-success','Thêm sản phẩm thành công');
-            //Session::put('message','Thêm sản phẩm thành công');
+            Session::flash('alert-success','Thêm sản phẩm thành công...!');
+            //Session::put('message','Thêm sản phẩm thành công...!');
             return Redirect::to('all-sp');
         }
         $data['sp_ha'] = '';
 
         DB::table('tbl_sanpham')->insert($data);
-        Session::flash('alert-success','Thêm sản phẩm thành công');
-        //Session::put('message','Thêm sản phẩm thành công');
+        Session::flash('alert-success','Thêm sản phẩm thành công...!');
+        //Session::put('message','Thêm sản phẩm thành công...!');
         return Redirect::to('add-sp');
         print_r($data);
     }
@@ -86,19 +86,19 @@ class SanphamController extends Controller
             $get_ha->move('public/uploads/product',$new_ha);
             $data['sp_ha'] = $new_ha;
             DB::table('tbl_sanpham')->where('sp_id',$sp_id)->update($data);
-            Session::flash('alert-success','Cập nhật sản phẩm thành công');
-            //Session::put('message','Cập nhật sản phẩm thành công');
+            Session::flash('alert-success','Cập nhật sản phẩm thành công...!');
+            //Session::put('message','Cập nhật sản phẩm thành công...!');
             return Redirect::to('all-sp');
         }
         DB::table('tbl_sanpham')->where('sp_id',$sp_id)->update($data);
-        Session::flash('alert-success','Cập nhật sản phẩm thành công');
+        Session::flash('alert-success','Cập nhật sản phẩm thành công...!');
         return Redirect::to('/all-sp');
     }
     public function delete_sp($sp_id){
         $this->AuthLogin();
         DB::table('tbl_sanpham')->where('sp_id',$sp_id)->delete();
-        Session::flash('alert-success','Xoá sản phẩm thành công');
-        //Session::put('message','Xoá sản phẩm thành công');
+        Session::flash('alert-success','Xoá sản phẩm thành công...!');
+        //Session::put('message','Xoá sản phẩm thành công...!');
         return Redirect::to('/all-sp');
     }
     //End Admin pages

@@ -36,7 +36,7 @@ class NhasanxuatController extends Controller
 
 
         DB::table('tbl_nhasanxuat')->insert($data);
-        Session::put('message','Thêm sản phẩm thành công');
+        Session::flash('alert-success','Thêm nhà sản xuất thành công...!');
         return Redirect::to('/all-nsx');
         // print_r($data);
     }
@@ -53,13 +53,13 @@ class NhasanxuatController extends Controller
         $data['nsx_mota'] = $request->nsx_mota;
 
         DB::table('tbl_nhasanxuat')->where('nsx_id',$nsx_id)->update($data);
-        Session::put('message','Cập nhật sản phẩm thành công');
+        Session::flash('alert-success','Cập nhật nhà sản xuất thành công...!');
         return Redirect::to('/all-nsx');
     }
     public function delete_nsx($nsx_id){
         $this->AuthLogin();
         DB::table('tbl_nhasanxuat')->where('nsx_id',$nsx_id)->delete();
-        Session::put('message','Xoá sản phẩm thành công');
+        Session::flash('alert-success','Xoá nhà sản xuất thành công...!');
         return Redirect::to('/all-nsx');
     }
     //end function Admin pages

@@ -1,6 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
-<h1>Liệt kê đơn hàng</h1>
+<h2 style="text-align: center">Liệt kê đơn hàng</h2> <br>
 <style>
     th {
   background-color: #595959;
@@ -10,7 +10,7 @@
     <thead >
     <tr>
         <th>Tên người đặt</th>
-        <th>Tông giá tiền</th>
+        <th>Tổng hoá đơn</th>
         <th>Tình trạng đơn hàng</th>
         <th>Hành động</th>
     </tr>
