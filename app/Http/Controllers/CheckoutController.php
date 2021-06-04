@@ -123,15 +123,31 @@ class CheckoutController extends Controller
     }
     public function edit_dh($order_id){
         $this->AuthLogin();
-        $order_by_id = DB::table('tbl_order')->join('tbl_khachhang','tbl_khachhang.kh_id','=','tbl_order.kh_id')
-        ->join('tbl_hoadon','tbl_hoadon.hd_id','=','tbl_order.hd_id')
-        ->join('tbl_chitietdonhang','tbl_order.order_id','=','tbl_chitietdonhang.order_id')
-        ->select('tbl_order.*','tbl_khachhang.*','tbl_hoadon.*','tbl_chitietdonhang.*')
-        ->first();
+        // $order_by_id = DB::table('tbl_order')->join('tbl_khachhang','tbl_khachhang.kh_id','=','tbl_order.kh_id')
+        // ->join('tbl_hoadon','tbl_hoadon.hd_id','=','tbl_order.hd_id')
+        // ->join('tbl_chitietdonhang','tbl_order.order_id','=','tbl_chitietdonhang.order_id')
+        // ->select('tbl_order.*','tbl_khachhang.*','tbl_hoadon.*','tbl_chitietdonhang.*')
+        // ->get();
+        $order_details=  DB::table('tbl_chitietdonhang')->where('order_id', $order_id)->get();
+        $order=  DB::table('tbl_order')->where('order_id', $order_id)->get();
+        // $hd_id-=  DB::table('tbl_hoadon')->where('hd_id', $hd_id)->get();
+        //$kh=  DB::table('tbl_hoadon')::where('hd_id', $hd_id)->get();
+        foreach($order as $key => $ord ){
+            $kh_id=$ord->kh_id;
+            $hd_id=$ord->hd_id;
+            $hd_id=$ord->hd_id;
+        }
+        $kh=DB::table('tbl_khachhang')->where('kh_id', $kh_id)->first();
+        $hd=DB::table('tbl_hoadon')->where('hd_id', $hd_id)->first();
+
         // echo '<pre>';
         // print_r($order_by_id);
         // echo '</pre>';
-        $edit_dh = view('admin.edit_dh')->with('order_by_id',$order_by_id);
-        return view('admin_layout')->with('admin.edit_dh',$edit_dh);
+        
+        // $edit_dh = view('admin.edit_dh')->with('order_by_id',$order_by_id);
+        // return view('admin_layout')->with('admin.edit_dh',$edit_dh);
+
+        return view('admin.edit_dh')->with('order_details',$order_details)->with('order',$order)->with('kh',$kh)->with('hd',$hd);
     }
+        
 }

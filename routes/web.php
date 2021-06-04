@@ -21,6 +21,7 @@ use App\Http\Controllers\CheckoutController;
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/trang-chu','App\Http\Controllers\HomeController@index');
+Route::get('/san-pham','App\Http\Controllers\HomeController@sp');
 Route::post('/tim-kiem','App\Http\Controllers\HomeController@tim_kiem');
 
 Route::get('/thu', function () {

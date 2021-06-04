@@ -1,16 +1,16 @@
 @extends('layout')
 @section('content')
 <div class="features_items"><!--features_items-->
-	<h2 class="title text-center">Sản phẩm mới nhất</h2>
-	@foreach($sp as $key => $sp)
-	<a href="{{URL::TO('chi-tiet-san-pham/'.$sp->sp_id)}}">
+	<h2 class="title text-center">Danh sách sản phẩm </h2>
+	@foreach($sp as $key => $sp1)
+	<a href="{{URL::TO('chi-tiet-san-pham/'.$sp1->sp_id)}}">
 		<div class="col-sm-4">
 			<div class="product-image-wrapper">
 				<div class="single-products">
 					<div class="productinfo text-center">
-						<img src="{{URL::TO('public/uploads/product/'.$sp->sp_ha)}}" height="240px" width="210px" alt="" />
-						<h2>{{number_format($sp->sp_gia).' VNĐ'}}</h2>
-						<p>{{$sp->sp_ten}}</p>
+						<img src="{{URL::TO('public/uploads/product/'.$sp1->sp_ha)}}" height="240px" width="210px" alt="" />
+						<h2>{{number_format($sp1->sp_gia).' VNĐ'}}</h2>
+						<p>{{$sp1->sp_ten}}</p>
 						<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
 					</div>
 					<!-- <div class="product-overlay">

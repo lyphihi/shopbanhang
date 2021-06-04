@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="{{asset('backend/images/1.png')}}">
+                <img alt="" height="35" width="40" src="{{asset('backend/images/thu.png')}}">
                 <span class="username">
 				<?php
 					$name = Session::get('admin_name');

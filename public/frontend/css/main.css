@@ -11,6 +11,8 @@ body {
   background:;
   position: relative;
   font-weight:400px;
+  /* Thêm để xoá thanh cuộn ngang trên trang web desktop */
+  overflow-x: hidden;
 }
 
 ul li {

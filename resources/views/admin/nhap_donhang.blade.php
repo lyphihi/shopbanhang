@@ -15,8 +15,8 @@
     </thead>
     <tbody>
     <tr>
-        <td>{{$order_by_id->kh_ten}}</td>
-        <td>{{$order_by_id->kh_sdt}}</td>
+        <td>{{$kh->kh_ten}}</td>
+        <td>{{$kh->kh_sdt}}</td>
     </tr>
     </tbody>
 </table>
@@ -31,9 +31,9 @@
     </thead>
     <tbody>
     <tr>
-        <td>{{$order_by_id->hd_ten}}</td>
-        <td>{{$order_by_id->hd_diachi}}</td>
-        <td>{{$order_by_id->hd_sdt}}</td>
+        <td>{{$hd->hd_ten}}</td>
+        <td>{{$hd->hd_diachi}}</td>
+        <td>{{$hd->hd_sdt}}</td>
     </tr>
     </tbody>
 </table> <br><br>
@@ -41,6 +41,7 @@
 <table class="table table-dark table-bordered, table-agile-info">
     <thead >
         <tr>
+            <th>Thu tu</th>
             <th>Tên sản phẩm</th>
             <th>Số lượng</th>
             <th>Giá</th>
@@ -48,11 +49,25 @@
         </tr>
     </thead>
     <tbody>
+    @php 
+    $i=0;
+    $total=0;
+    @endphp
+    @foreach($order_details as $key => $details )
+    @php
+    $i++;
+    $subtotal=$details->sp_soluong*$details->sp_gia;
+    $total+=$subtotal;
+    @endphp
+    @endforeach
+    
+
         <tr>
-            <td>{{$order_by_id->sp_ten}}</td>
-            <td>{{$order_by_id->sp_soluong}}</td>
-            <td>{{$order_by_id->sp_gia}}</td>
-            <td>{{$order_by_id->order_tong}}</td>
+            <th>{{$i}}</th>
+            <th>{{$details->sp_ten}}</th>
+            <th>{{$details->sp_soluong}}</th>
+            <th>{{$details->sp_gia}}</th>
+            <th>{{number_format($subtotal,0,',','.')}}</th>
         </tr>
     </tbody>
 </table>

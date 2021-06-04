@@ -2,7 +2,7 @@
 @section('content')
 
 <section id="cart_items">
-    <div class="container">
+    <div class="">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
                 <li><a href="{{URL::TO('/')}}">Trang chủ</a></li>

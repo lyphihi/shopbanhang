@@ -12,7 +12,7 @@
                         <input type="password" name="password_tk" placeholder="Mật khẩu" />
                         <span>
                             <input type="checkbox" class="checkbox"> 
-                            Ghi nhớ ddawnh nhập
+                            Ghi nhớ đăng nhập
                         </span>
                         <button type="submit" class="btn btn-default">Login</button>
                     </form>

@@ -10,18 +10,18 @@
 			<div class="product-image-wrapper">
 				<div class="single-products">
 					<div class="productinfo text-center">
-						<img src="{{URL::TO('public/uploads/product/'.$sp->sp_ha)}}" alt="" />
+						<img src="{{URL::TO('public/uploads/product/'.$sp->sp_ha)}}" height="240px" width="210px" alt="" />
 						<h2>{{number_format($sp->sp_gia).' VNĐ'}}</h2>
 						<p>{{$sp->sp_ten}}</p>
-						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
+						<!-- <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a> -->
 					</div>
 				</div>
-				<div class="choose">
+				<!-- <div class="choose">
 					<ul class="nav nav-pills nav-justified">
 						<li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
 						<li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</a>

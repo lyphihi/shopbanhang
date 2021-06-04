@@ -11,11 +11,11 @@
         <table border="0" width="100%" cellspacing="0">
             <tbody>
                 <tr>
-                    <td align="center"><img src="#" width="100px" height="100px" /></td>
+                    <td align="center"><img src="{{asset('frontend/img/logo.png')}}" width="100px" height="100px" /></td>
                     <td align="center">
-                        <b style="font-size: 2em;">Nền tảng - Hành trang tới Tương lai</b><br />
-                        <small>Cung cấp các loại hoa theo nhiều chủ đề: sinh nhật, hoa cưới, chúc mừng,...</small><br />
-                        <small>Giúp các bạn trao yêu thương đến người mình quan tâm.
+                        <b style="font-size: 2em;">Eshopper</b><br />
+                        <small>Cung cấp các sản phẩm mới được ra mắt từ các hãng điện thoại đến từ nhiều nước</small><br />
+                        <small>Giúp các bạn tìm được sản phẩm mình yêu thích.
                         </small>
                     </td>
                 </tr>
@@ -26,20 +26,20 @@
         <table border="0" width="100%" cellspacing="0">
             <tbody>
                 <tr>
-                    <td width="30%">Khách hàng:</td>
-                    <td><b>{{$order_by_id->kh_ten}}</b></td>
+                    <td width="30%">Tên người mua:</td>
+                    <td><b>{{$kh->kh_ten}}</b></td>
                 </tr>
                 <tr>
                     <td>Địa chỉ:</td>
-                    <td><b>{{$order_by_id->hd_diachi}}</b></td>
+                    <td><b>{{$hd->hd_diachi}}</b></td>
                 </tr>
                 <tr>
                     <td>Số điện thoại:</td>
-                    <td><b>{{$order_by_id->hd_sdt}}</b></td>
+                    <td><b>{{$hd->hd_sdt}}</b></td>
                 </tr>
                 <tr>
-                    <td>Tổng thành tiền:</td>
-                    <td><b>{{$order_by_id->order_tong}}</b></td>
+                    <td>Tên người nhận:</td>
+                    <td><b>{{$hd->hd_ten}}</b></td>
                 </tr>
             </tbody>
         </table>
@@ -48,6 +48,7 @@
         <table border="1" width="100%" cellspacing="0" cellpadding="5">
             <thead>
                 <tr>
+                    <th>Thứ tự</th>
                     <th>Sản phẩm</th>
                     <th>Số lượng</th>
                     <th>Đơn giá</th>
@@ -55,15 +56,27 @@
                 </tr>
             </thead>
             <tbody>
-                <td align="right">{{$order_by_id->sp_ten}}</td>
-                <td align="right">{{$order_by_id->sp_soluong}}</td>
-                <td align="right">{{$order_by_id->sp_gia}}</td>
-                <td align="right">{{$order_by_id->order_tong}}</td>
+            @php 
+            $i=0;
+            $total=0;
+            @endphp
+            @foreach($order_details as $key => $details )
+            @php
+            $i++;
+            $subtotal=$details->sp_soluong*$details->sp_gia;
+            $total+=$subtotal;
+            @endphp
+            @endforeach
+                <td>{{$i}}</td>
+                <td align="right">{{$details->sp_ten}}</td>
+                <td align="right">{{$details->sp_soluong}}</td>
+                <td align="right">{{$details->sp_gia}}</td>
+                <td align="right">{{number_format($subtotal,0,',','.')}}</td>
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4" align="right"><b>Tổng thành tiền</b></td>
-                    <td align="right"><b>{{$order_by_id->order_tong}}</b></td>
+                    <td align="right"><b>{{number_format($subtotal,0,',','.')}}</b></td>
                 </tr>
             </tfoot>
         </table>
@@ -73,11 +86,10 @@
             <tbody>
                 <tr>
                     <td align="center">
-                        <small>Xin cám ơn Quý khách đã ủng hộ Shophoatuoi.vn, chúc quý khách luôn vui vẻ và hạnh phúc</small>
+                        <small>Xin cám ơn Quý khách đã ủng hộ Eshopper, chúc quý khách luôn vui vẻ và hạnh phúc</small>
                     </td>
                 </tr>
             </tbody>
         </table>
     </section>
 @endsection
-
